@@ -13,3 +13,39 @@ Classe principal - desenvolvido em Python 3.10.6
 ===================================================="""
 
 import numpy as np
+
+
+"""
+Função para ler as informações do arquivo e armazane-las em uma matriz do tipo numpy
+"""
+
+
+def leArquivo(instancia):
+    # a variável caminho serve para guardar o path do arquivo a ser lido
+    caminho = 'Instancias/' + instancia + '.txt'
+    # with open() realiza o tratamento do arquivo de forma mais limpa
+    with open(caminho, "rb") as file:
+        # genfromtxt() gera uma matriz baseado nas informações do txt
+        matriz = np.genfromtxt(file, dtype="int64")
+    return matriz
+
+
+"""
+Função para salvar as informações obtidas em um arquivo e imprimir os mesmos na tela
+"""
+
+
+def salvaInfos(instancia, dimensoes):
+    # stringResultado é a variavel que armazena a string com o nome da instancia e seus resultados
+    stringResultado = instancia + ' ' + \
+        str(dimensoes[0]) + ' ' + str(dimensoes[1])
+
+    # caminho armazena o path do txt no qual ficara armazenado o resultado
+    caminho = 'Resultados/resultado.txt'
+
+    # with open() realiza o tratamento do arquivo de forma mais limpa
+    with open(caminho, "a") as file:
+        file.write(stringResultado + '\n')
+
+    # imprime os resultados salvos no terminal
+    print(stringResultado)

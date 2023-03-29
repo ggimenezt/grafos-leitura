@@ -21,7 +21,14 @@ from Metodos import (caracteristicas as car)
 
 
 def main(instancia):
-    x = 0
+    # chama a função para ler arquivo e criar a matriz numpy
+    matriz = ds.leArquivo(instancia)
+
+    # chama a função para obter as dimensões da matriz
+    dimensoes = car.infosMatriz(matriz)
+
+    # chama a função que salva e imprime os resultados obtidos
+    ds.salvaInfos(instancia, dimensoes)
 
 
 """Chamada a função main()

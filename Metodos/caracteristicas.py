@@ -13,3 +13,14 @@ Classe principal - desenvolvido em Python 3.10.6
 ===================================================="""
 
 import numpy as np
+
+"""
+função para ler as dimensoes da matriz utilizando a função shape da biblioteca numpy
+"""
+
+
+def infosMatriz(matriz):
+    # shape() é uma função da biblioteca numpy que retorna as dimensões do array
+    dimensao = np.shape(matriz)
+
+    return dimensao
