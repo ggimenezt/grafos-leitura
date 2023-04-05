@@ -21,11 +21,16 @@ from Metodos import (caracteristicas as car)
 
 
 def main(instancia):
-    # chama a função para ler arquivo e criar a matriz numpy
+    # chama a função para ler arquivo e retorna a matriz numpy
     matriz = ds.leArquivo(instancia)
 
-    # chama a função para obter as dimensões da matriz
-    dimensoes = car.infosMatriz(matriz)
+    # chama a função que retorna as dimensões da matriz
+    dimensoes = car.dimensoesMatriz(matriz)
+
+    adjacencia = car.verificaAdjacencia(
+        [[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 0, 3)
+
+    print(adjacencia)
 
     # chama a função que salva e imprime os resultados obtidos
     ds.salvaInfos(instancia, dimensoes)
