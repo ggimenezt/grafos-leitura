@@ -16,6 +16,7 @@ import sys
 from igraph import *
 from Inicializacao import (dataSet as ds)
 from Metodos import (caracteristicas as car)
+from Inicializacao import (grafo as gr)
 
 '''Core do programa'''
 
@@ -27,10 +28,10 @@ def main(instancia):
     # chama a função que retorna as dimensões da matriz
     dimensoes = car.dimensoesMatriz(matriz)
 
-    adjacencia = car.verificaAdjacencia(
-        [[0, 1, 0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 0, 3)
+    tipo = gr.removeVertice(
+        [[0, 1,	0, 0], [1, 0, 1, 1], [0, 1, 0, 1], [0, 1, 1, 0]], 2)
 
-    print(adjacencia)
+    print(tipo)
 
     # chama a função que salva e imprime os resultados obtidos
     ds.salvaInfos(instancia, dimensoes)

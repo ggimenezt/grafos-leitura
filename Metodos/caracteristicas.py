@@ -34,14 +34,12 @@ def tipoGrafo(matriz):
     if np.sum(np.diagonal(matriz)) > 0:
         tipo = '3'
 
-    else:
-        for x in range(tam):
-            for y in range(tam):
+    for x in range(tam):
+        for y in range(tam):
+            if tipo != '3':
                 if matriz[x][y] > 1:
                     tipo = '2'
 
-    for x in range(tam):
-        for y in range(tam):
             if x != y:
                 if matriz[x][y] != matriz[y][x]:
                     flag = 1
@@ -65,4 +63,12 @@ def verificaAdjacencia(matriz, vi, vj):
 
     return adjacencia
 
-# def calcDensidade(matriz):
+
+def calcDensidade(matriz):
+    densidade = 0
+    arestas = np.sum(matriz)
+    nos = np.shape(matriz)[0]
+
+    densidade = round(arestas/(nos*(nos-1)), 3)
+
+    return densidade
