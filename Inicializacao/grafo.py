@@ -28,6 +28,16 @@ def insereAresta(matriz, vi, vj):
 
     return matriz
 
+def insereArestaLista(listaAdj, vi, vj):
+
+    listaAdj[vi].append(vj)
+    listaAdj[vj].append(vi)
+
+    listaAdj[vi].sort()
+    listaAdj[vj].sort()
+
+    return listaAdj
+
 
 def insereVertice(matriz):
     zerosLinhas = np.zeros(car.dimensoesMatriz(matriz)[0], dtype=int)
@@ -36,6 +46,11 @@ def insereVertice(matriz):
     matriz = np.hstack([matriz, zerosColunas], dtype=int)
 
     return matriz
+
+def insereVerticeLista(listaAdj):
+    listaAdj[len(listaAdj+1)] = []
+
+    return listaAdj
 
 
 def removeAresta(matriz, vi, vj):
@@ -50,6 +65,27 @@ def removeAresta(matriz, vi, vj):
 
     return matriz
 
+def removeArestaLista(listaAdj, vi, vj):
+    flag = 0
+
+    for i in listaAdj:
+        for j in range(len(listaAdj[i])):
+            if i not in listaAdj[listaAdj[i][j]]:
+                flag = '1'
+                break
+
+    if flag == 0:    
+        listaAdj[vi].remove(vj)
+        listaAdj[vj].remove(vi)
+
+    else:
+        listaAdj[vi].remove(vj)
+    
+    listaAdj[vi].sort()
+    listaAdj[vj].sort()
+
+    return listaAdj
+
 
 def removeVertice(matriz, vi):
     for i in range(car.dimensoesMatriz(matriz)[0]):
@@ -57,3 +93,12 @@ def removeVertice(matriz, vi):
         matriz[i][vi] = -1
 
     return np.array(matriz)
+
+def removeVerticeLista(listaAdj, vi):
+    del listaAdj[vi]
+
+    for i in listaAdj:
+        for j in range(listaAdj[i].count(vi)):
+            listaAdj[i].remove(vi)
+
+    return listaAdj

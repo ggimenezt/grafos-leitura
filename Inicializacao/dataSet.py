@@ -49,3 +49,18 @@ def salvaInfos(instancia, dimensoes):
 
     # imprime os resultados salvos no terminal
     print(stringResultado)
+
+
+def criaListaAdjacencias(matriz):
+
+    tam = np.shape(matriz)[0]
+    listaAdj = {}
+
+    for i in range(tam):
+        listaAdj[i] = []
+        for j in range(tam):
+            if matriz[i][j] != 0 and matriz[i][j] != -1:
+                for x in range(matriz[i][j]):
+                    listaAdj[i].append(j)
+
+    return listaAdj

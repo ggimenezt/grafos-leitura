@@ -26,7 +26,7 @@ def dimensoesMatriz(matriz):
     return dimensao
 
 
-def tipoGrafo(matriz):
+def tipoGrafoMatriz(matriz):
     tipo = '0'
     flag = 0
     tam = dimensoesMatriz(matriz)[0]
@@ -52,6 +52,27 @@ def tipoGrafo(matriz):
 
     return (int(tipo))
 
+def tipoGrafoLista(listaAdj):
+    tipo = '0'
+    flag = '0'
+
+    for i in listaAdj:
+        if i in listaAdj[i]:
+            tipo = '3'
+    
+    if tipo != '3':
+        for i in listaAdj:
+            for j in range(len(listaAdj[i])-1):
+                if listaAdj[i][j] == listaAdj[i][j+1]:
+                    tipo  = '2'
+    
+    for i in listaAdj:
+        for j in range(len(listaAdj[i])):
+            if i not in listaAdj[listaAdj[i][j]]:
+                flag = '1'
+
+    return (int(tipo+flag))
+
 
 def verificaAdjacencia(matriz, vi, vj):
     if matriz[vi][vj] > 0:
@@ -59,9 +80,13 @@ def verificaAdjacencia(matriz, vi, vj):
     else:
         adjacencia = False
 
-    print(adjacencia)
-
     return adjacencia
+
+def verificaAdjacenciaLista(listaAdj, vi, vj):
+    if vj in listaAdj[vi]:
+        return True
+    else:
+        return False
 
 
 def calcDensidade(matriz):
@@ -70,5 +95,16 @@ def calcDensidade(matriz):
     nos = np.shape(matriz)[0]
 
     densidade = round(arestas/(nos*(nos-1)), 3)
+
+    return densidade
+
+def calcDensidadeLista(listaAdj):
+    arestas = 0
+    vertices = len(listaAdj)
+
+    for i in listaAdj:
+        arestas += len(listaAdj[i])
+
+    densidade = round(arestas/(vertices*(vertices-1)), 3)
 
     return densidade
