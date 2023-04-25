@@ -28,7 +28,7 @@ def main(instancia):
     # chama a função que retorna as dimensões da matriz
     dimensoes = car.dimensoesMatriz(matriz)
 
-    teste = gr.removeArestaLista({0: [1, 2], 1: [0, 2, 3], 2: [0, 0, 1, 3], 3: [1, 2]}, 0, 2)
+    teste = car.caminhoEuleriano([[0, 1, 0, 0, 1, 0], [1, 0, 1, 1, 0, 1], [0, 1, 0, 1, 1, 1], [0, 1, 1, 0, 1, 1], [1, 0, 1, 1, 0, 1], [0, 1, 1, 1, 1, 0]])
 
     print(teste)
 

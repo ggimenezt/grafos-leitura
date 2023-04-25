@@ -108,3 +108,40 @@ def calcDensidadeLista(listaAdj):
     densidade = round(arestas/(vertices*(vertices-1)), 3)
 
     return densidade
+
+def warshall(matriz):
+    n = np.shape(matriz)[0]
+    R = matriz
+
+    for k in range(n):
+        for i in range(n):
+            for j in range(n):
+                if R[i][j] == 1 or (R[i][k] == 1 and R[k][j] == 1):
+                    R[i][j] = 1
+                else:
+                    R[i][j] = R[i][j]
+
+    return np.array(R)
+
+def caminhoEuleriano(matriz):
+    n = np.shape(matriz)[0]
+    total = 0
+    i = 0
+    print(n)
+    print()
+
+    while total <= 2 and i < n:
+        print(i)
+        grau = np.sum(matriz[i])
+
+        if grau%2 !=0:
+            total += 1
+
+        i+=1
+
+    if total > 2:
+        return False
+    
+    else:
+        return True
+    
