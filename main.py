@@ -17,6 +17,7 @@ from igraph import *
 from Inicializacao import (dataSet as ds)
 from Metodos import (caracteristicas as car)
 from Inicializacao import (grafo as gr)
+from Metodos import (buscas as bc)
 
 '''Core do programa'''
 
@@ -28,13 +29,12 @@ def main(instancia):
     # chama a função que retorna as dimensões da matriz
     dimensoes = car.dimensoesMatriz(matriz)
 
-    teste = car.caminhoEuleriano([[0, 1, 0, 0, 1, 0], [1, 0, 1, 1, 0, 1], [0, 1, 0, 1, 1, 1], [0, 1, 1, 0, 1, 1], [1, 0, 1, 1, 0, 1], [0, 1, 1, 1, 1, 0]])
-
-    print(teste)
-
     # chama a função que salva e imprime os resultados obtidos
     ds.salvaInfos(instancia, dimensoes)
 
+    dic = {0: [1, 3, 4], 1: [0, 2], 2: [1], 3: [0], 4: [0, 5], 5: [4], 6:[]}
+    
+    teste = bc.DFS({0: [1, 3, 4], 1: [0, 2], 2: [1], 3: [0], 4: [0, 5], 5: [4]}, 0)
 
 """Chamada a função main()
    Argumento Entrada: [1] dataset"""
