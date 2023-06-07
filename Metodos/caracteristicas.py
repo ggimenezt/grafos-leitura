@@ -127,8 +127,6 @@ def caminhoEuleriano(matriz):
     n = np.shape(matriz)[0]
     total = 0
     i = 0
-    print(n)
-    print()
 
     while total <= 2 and i < n:
         print(i)
@@ -144,4 +142,33 @@ def caminhoEuleriano(matriz):
     
     else:
         return True
+    
+def verifica_dag(listaAdj):
+    arestas = []
+    fontes = []
+
+    for vertice in listaAdj:
+        if not any(vertice in adjacentes for adjacentes in listaAdj.values()):
+            fontes.append(vertice)
+
+    for vertice in listaAdj:
+        for adjacente in listaAdj[vertice]:
+            arestas.append((vertice, adjacente))
+
+    while fontes:
+        vertice = fontes[0]
+        del fontes[0]
+
+        for aresta in list(arestas):
+            if aresta[0] == vertice:
+                adjacente = aresta[1]
+                arestas.remove(aresta)
+                if not any(adjacente == adj[1] for adj in arestas):
+                    fontes.append(adjacente)
+
+    if arestas:
+        print("NÃO DAG")
+    else:
+        print("DAG")
+
     

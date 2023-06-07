@@ -31,10 +31,10 @@ def main(instancia):
 
     # chama a função que salva e imprime os resultados obtidos
     ds.salvaInfos(instancia, dimensoes)
-
-    dic = {0: [1, 3, 4], 1: [0, 2], 2: [1], 3: [0], 4: [0, 5], 5: [4], 6:[]}
     
-    teste = bc.DFS({0: [1, 3, 4], 1: [0, 2], 2: [1], 3: [0], 4: [0, 5], 5: [4]}, 0)
+    #teste = bc.DFS({0: [1, 4], 1: [2, 4], 2: [5], 3: [0, 4], 4: [5], 5: [1]}, 0)
+    teste = bc.temposVertices({0: [1, 4], 1: [2, 4], 2: [5], 3: [0, 4], 4: [5], 5: [1]}, 0)
+    print(teste)
 
 """Chamada a função main()
    Argumento Entrada: [1] dataset"""
